@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>About us</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Invest project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/styles/bootstrap4/bootstrap.min.css">
+<link href="/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="/styles/about.css">
+<link rel="stylesheet" type="text/css" href="/styles/about_responsive.css">
+</head>
+<body>
+
+<div class="super_container">
+	
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/about.jpg" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_content">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header -->
+
+		<header class="header">
+
+			<!-- Top Bar -->
+			<div class="top_bar">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="top_bar_container d-flex flex-row align-items-center justify-content-start">
+								<div class="logo_container">
+									<div class="logo">
+										<a href="#">
+											<div class="logo_line_1"><span>STACK</span>FINANCE</div>
+											<div class="logo_img"><img src="/images/stack.jpg" alt=""></div>
+										</a>
+									</div>
+								</div>
+								<div class="top_bar_content ml-auto">
+									<div class="main_menu_contact">
+										<div class="main_menu_phone"><img src="/images/phone-call.svg" class="svg" alt=""><span>+91-7598181897</span></div>
+										<div class="main_menu_email"><img src="/images/envelope.svg" class="svg" alt=""><span>afsalmsuthafa123@gmail.com.com</span></div>
+									</div>
+									<div class="main_menu_social">
+										<ul>
+											<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="burger">
+									<i class="fa fa-bars" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+
+			<!-- Main Menu -->
+			<div class="main_menu">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="main_menu_container d-flex flex-row align-items-center justify-content-start">
+								<div class="main_menu_content">
+									<ul class="main_menu_list">
+										<li><a href="/welcome">Register
+										</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	
+	<!-- Features -->
+
+	
+	<table class="table table-striped table-primary">
+		<thead>
+		  <tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Emp Type</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <%if (companies.length >0){ %>
+		  <% companies.forEach(function(row){ %>
+		  <tr>
+			<td><%= row.name %></td>
+			<td><%= row.ltp %></td>
+			<td><%= row.volume %></td>
+		  </tr>
+		  <% })}else{ %>
+			<tr>
+				<td colspan="3">No Record Found</td>
+			</tr>
+		 <% } %>
+		</tbody>
+	  </table>
+	
+	
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_col">
+					<div class="footer_about">
+						<div class="logo_container footer_logo">
+							<div class="logo">
+								<a href="#">
+									<div class="logo_line_1"><span>STACK</span></div>
+									<div class="logo_line_2">FINANCE</div>
+									<div class="logo_img"><img src="/images/stack.jpg" alt=""></div>
+								</a>
+							</div>
+						</div>
+						<p class="footer_about_text">They keep us motivated in difficult times. We all need that extra boost sometimes to remind ourselves that bad times will eventually pass.</p>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_col">
+					<div class="footer_links">
+						<div class="footer_title">Useful Links</div>
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Case Studies</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Consulting</a></li>
+							<li><a href="#">Commodities</a></li>
+							<li><a href="#">Insurance</a></li>
+							<li><a href="#">Trades</a></li>
+							<li><a href="#">Planning</a></li>
+							<li><a href="#">Finance</a></li>
+							<li><a href="#">Crypto</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-6 footer_col">
+					<div class="footer_newsletter">
+						<div class="footer_title">Subscribe to our newsletter</div>
+						<form action="#" class="footer_newsletter_form">
+							<input type="email" class="footer_newsletter_input" placeholder="Your E-mail" required="required">
+							<button class="footer_newsletter_button" type="submit">subscribe</button>
+						</form>
+						<div class="footer_newsletter_text">They keep us motivated in difficult times. We all need that extra boost sometimes to remind ourselves that bad times will eventually pass.</div>
+						<div class="footer_social">
+							<ul>
+								<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+</div>
+
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/styles/bootstrap4/popper.js"></script>
+<script src="/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="/plugins/greensock/TweenMax.min.js"></script>
+<script src="/plugins/greensock/TimelineMax.min.js"></script>
+<script src="/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="/plugins/greensock/animation.gsap.min.js"></script>
+<script src="/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="/plugins/easing/easing.js"></script>
+<script src="/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="/js/about_custom.js"></script>
+</body>
+</html>
