@@ -1,12 +1,13 @@
 {
   "name": "stock-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "app for stock finance",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
-  "author": "",
+  "author": "Muhammed Afsal K C",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
