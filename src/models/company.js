@@ -28,12 +28,24 @@ const companySchema = new mongoose.Schema({
 const Company = mongoose.model('Company', companySchema)
 
 
+// const createInterval = () => {
+
+//         let num = Math.floor(Math.random() * 10)
+
+//         if(num % 2 == 0) {
+//             Company.updateMany({}, { $mul: { ltp : (1/Math.random()) } })
+//             .then(() => {} )
+//             .catch(error => console.log(error))
+//         } else {
+//             Company.updateMany({}, { $mul: { ltp : (1/Math.random()) } })
+//             .then(() => {} )
+//             .catch(error => console.log(error))
+//         }
+//     }
 
 
-const interwel = setInterval(() => {
-    Company.updateMany({}, { $mul: { ltp : Math.random() } })
-    .then(() => {} ).catch(error => console.log(error))
-}, 10000)
+// const intervalId = setInterval(createInterval, 3000)
+
 
 
 
