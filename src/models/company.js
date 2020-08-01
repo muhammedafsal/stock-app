@@ -30,11 +30,10 @@ const Company = mongoose.model('Company', companySchema)
 
 
 
-// const interwel = setInterval(() => {
-//     Company.updateMany({}, { $mul: { ltp : Math.random() } })
-//     .then(() => {} ).catch(error => console.log(error))
-//     //console.log('Ting Tong')
-// }, 10000)
+const interwel = setInterval(() => {
+    Company.updateMany({}, { $mul: { ltp : Math.random() } })
+    .then(() => {} ).catch(error => console.log(error))
+}, 10000)
 
 
 
