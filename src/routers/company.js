@@ -18,8 +18,10 @@ router.post('/company', async (req, res) => {
 
 router.get('/company', async (req, res) => {
     try{
-        await req.user.populate('company').execPopulate()
-        res.send(req.user.company)
+        // await req.user.populate('company').execPopulate()
+        // res.send(req.user.company)
+         const companies = await Company.find({})
+         res.send(companies)
     } catch(err) {  
         res.status(500).send(err)
     }

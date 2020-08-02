@@ -7,10 +7,14 @@ const companySchema = new mongoose.Schema({
         type : String
      },
      ltp : {
-         type : Number,
-         default : 0
+        type : Number,
+        default : 0
      },
      volume : {
+        type : Number,
+        default : 0
+    },
+    value : {
         type : Number,
         default : 0
     },
@@ -29,11 +33,11 @@ module.exports = Company
 const createInterval = () => {
     let num = Math.floor(Math.random() * 10)
     if(num % 2 == 0) {
-        Company.updateMany({}, { $mul: { ltp : (1.0002) } })
+        Company.updateMany({}, { $mul: { ltp : (1.00002) } })
         .then(() => {} )
         .catch(error => console.log(error))
     } else {
-        Company.updateMany({}, { $mul: { ltp : (0.9998) } })
+        Company.updateMany({}, { $mul: { ltp : (0.99998) } })
         .then(() => {} )
         .catch(error => console.log(error))
     }
