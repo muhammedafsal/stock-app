@@ -107,27 +107,4 @@ router.delete('/users/me', auth, async (req, res) =>{
 
 
 
-
-// -------------------- thursday work -----------------------
-
-
-router.post('/users/profile', async (req, res) =>{
-    console.log('re-directing page', )
-    console.log(req.body.data)
-    res.redirect('about');
-})
-
-router.get('/test', (req, res, next) => {
-    console.log('before redirection')
-    res.render('about')
-})
-
-
-
-// ---------------------------------------------------------
-
-
-
-
-
 module.exports = router

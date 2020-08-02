@@ -25,14 +25,14 @@ const userSchema = new mongoose.Schema({
         required : true,
         trim : true,
         validate(value) {
-            if(value.length < 7) throw new Error('minimum lenght is 6');
+            if(value.length < 7) throw new Error('minimum lenght is 6')
             if(value.includes('password')) throw new Error('Should not contain password') 
         }
     },
-    date : {
-        type : Date,
-        default : Date.now()
+    stocks : {
+        type: Array
     },
+    
     tokens :[{
         token : {
             type : String,

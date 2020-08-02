@@ -1,30 +1,33 @@
 const express = require('express')
+const http = require('http')
+const socketio = require('socket.io')
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path')
-const hbs = require('hbs')
 require('./db/mongoose')
 const userRouter = require('./routers/user')
 const companyRouter = require('./routers/company')
-const loginRouter = require('./routers/loginRout')
+
 const Company = require('./models/company')
 const publicDir = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
 
-
-
 const app = express()
-const port = process.env.PORT || 3000
+const server = http.createServer(app)
+const io = socketio(server)
+
+// exporting socketio
+exports.io = io
+
+// importing web page view routers
+const viewRouter = require('./routers/viewRouter')
 
 
-// ----- traversy code
 // Passport Config
 require('./config/passport')(passport);
-
-
 
 // EJS
 app.use(expressLayouts);
@@ -62,70 +65,18 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-
-
-
-// ----- traversy code
-
-
-
-
-
-//app.set('view engine', 'hbs');
-//app.set('views', viewsPath);
-//hbs.registerPartials(partialsPath);
 app.use(express.static(publicDir));
 app.use(express.json())
 app.use(userRouter)
 app.use(companyRouter)
-app.use(loginRouter)
+app.use(viewRouter)
 
 
 
-
-
-app.get('/weather', (req, res) => {
-    if(req.query.location){
-        const {location} = req.query;
-        geoCode(location, (error, result) => {
-            if(error) return res.send(error);
-
-            getWeather(result, (error1, result1) => {
-                if(error) return res.send(error1);
-                res.send(result1);
-            });
-        });
-    }else res.send({error : 'Please enter a location in query parameter'})
-    
-})
-
-
-// app.get('*', (req, res) =>{
-//     res.render('notFound', {
-//         url : req.baseUrl,
-//         message : 'Page not found'
-//     })
-// })
-
-
-
-
-
-app.listen(port, () => {
+const port = process.env.PORT || 3000
+server.listen(port, () => {
     console.log(`Node server has started on ${port}`)
 })
-
-
-
-
-
-
-
-
-// ------------------------------------------
-
-
 
 
 
