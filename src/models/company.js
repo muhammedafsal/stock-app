@@ -29,13 +29,16 @@ module.exports = Company
 const createInterval = () => {
     let num = Math.floor(Math.random() * 10)
     if(num % 2 == 0) {
-        Company.updateMany({}, { $mul: { ltp : (0.98) } , flag : true})
+        Company.updateMany({}, { $mul: { ltp : (1.0002) } })
         .then(() => {} )
         .catch(error => console.log(error))
     } else {
-        Company.updateMany({}, { $mul: { ltp : (1.02) } })
+        Company.updateMany({}, { $mul: { ltp : (0.9998) } })
         .then(() => {} )
         .catch(error => console.log(error))
     }
 }
-const intervalId = setInterval(createInterval, 3000)
+const intervalId = setInterval(createInterval, 3000);
+
+
+
