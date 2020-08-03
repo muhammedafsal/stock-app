@@ -144,20 +144,56 @@
 	  </table>
 	  <br><br>
 
-	<p style="color:black">Buy your favourite stock by clicking Add-Stocks button</p>
-	<p style="color:black">Please buy one share at a time</p>
-		
+	<p style="color:black">Buy your favourite stock by clicking Add-Stocks button</p>	
 	<br>
 	
-	<!-- Dynamic table creation -->
+	<!-- Add stock option -->
     <p><input type="button" id="addRow" value="Add-Stocks" onclick="addRow()" /></p>
     <div id="cont"></div><br>   <!--the container to add the table.-->
-	<p><input type="button" id="bt" value="Submit Data" onclick="submit()" /></p>
+	<p><input type="button" id="bt" value="Buy-Stocks" onclick="submit()" /></p>
 	<br><br>
 
-	<h3><strong style="color:black">My Stocks</strong></h3>
+
+	<h3><strong style="color:black">My Stocks Data</strong></h3>
+	<table class="table table-striped table-primary">
+		<thead>
+		  <tr>
+			<th>SYMBOL</th>
+			<th>Last Traded Price</th>
+			<th>Volume (shares)</th>
+			<th>Value (lakhs)</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <%if (user.company.length >0){ %>
+		  <% user.company.forEach(function(row){ %>
+		  <tr>
+			<td><%= row.name %></td>
+			<td><%= row.ltp.toFixed(2) %></td>
+			<td><%= row.volume %></td>
+			<td><%= row.value %></td>
+		  </tr>
+		  <% })}else{ %>
+			<tr>
+				<td colspan="3">You have not purchased any stocks yet, Purchase by tapping the Add-Stock button, enter proper company name and tap Buy-Stocks</td>
+			</tr>
+		 <% } %>
+		</tbody>
+	  </table>
+	  <br><br>
+
+
+	  
+
+
+
+
+
+
+
+	<!-- <h3><strong style="color:black">My Stocks</strong></h3>
 	<div id="containerData"></div>
-	<br><br>
+	<br><br> -->
 
 	</div>
 

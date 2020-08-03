@@ -7,8 +7,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path')
 require('./db/mongoose')
-const userRouter = require('./routers/user')
-const companyRouter = require('./routers/company')
+const userRouter = require('./routers/RESTApiRouters/user')
+const companyRouter = require('./routers/RESTApiRouters/company')
 
 const Company = require('./models/company')
 const publicDir = path.join(__dirname, '../public');

@@ -29,7 +29,6 @@ router.get('/dashboard',ensureAuthenticated, async (req, res) => {
 
     try{
         
-        let stocks
         await io.on('connection', (socket) => {
 
             socket.emit('message', `Welcome ${req.user.name}`)
@@ -48,20 +47,34 @@ router.get('/dashboard',ensureAuthenticated, async (req, res) => {
 
             // data coming from client throgh websocket
             socket.on('userStocksDataFromClient', async (data) => {
-                if(data){
-                    data.forEach((cur) =>{
-                      req.user.stocks = req.user.stocks.concat(cur)
-                    })
+                if(data.length === 1){
+                    // data.forEach((cur) =>{
+                    //   req.user.stocks = req.user.stocks.concat(cur)
+                    // })
+
+                    const name = data[0].replace(' ','').toUpperCase()
+                    let company = await Company.findOne({name})
+                    company.owner = req.user._id
+                    await company.save()
+                    await req.user.populate('company').execPopulate()
+                    
+
+                    console.log(req.user.company)
+
+                    //data sending back to all the clients
+                    io.emit('userStocksDataFromServer', req.user.company)   
+                    
+
                 } 
                 // clearing the duplicates from stocks array
                 req.user.stocks = [...new Set(req.user.stocks)]
+                //console.log('data', data)
             
 
                 //save the data to DB
                 await req.user.save()
 
-                //data sending back to all the clients
-                io.emit('userStocksDataFromServer', req.user.stocks)       
+                      
             })
 
             socket.on('init', () =>{
@@ -70,7 +83,12 @@ router.get('/dashboard',ensureAuthenticated, async (req, res) => {
 
         })
 
+        // fetching all companies 
         const companies = await Company.find()
+
+        // populating the company details associated with the virtual field of user.
+        await req.user.populate('company').execPopulate()
+        
         res.render('dashboard', {
         user: req.user, companies
         })

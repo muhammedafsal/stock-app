@@ -60,13 +60,13 @@ const dynamicResultTable = (data) => {
 
 
         // initial data fetching, emitting from client to server with null data
-        socket.emit('init', null)
+        // socket.emit('init', null)
 
-        // Getting data from server
-        socket.on('initResponse', (data) =>{
-            console.log('initial data fetching', data)
-            dynamicResultTable(data)
-        })
+        // // Getting data from server
+        // socket.on('initResponse', (data) =>{
+        //     console.log('initial data fetching', data)
+        //     dynamicResultTable(data)
+        // })
   }
 
 
@@ -136,15 +136,16 @@ socket.on('message', (message) =>{
             }
         }
         
-        
+        if(arrValues)
 		// pass the data to server through webSockets
         socket.emit('userStocksDataFromClient', arrValues)
 
         // data coming from server
         socket.on('userStocksDataFromServer', (data) => {
             console.log(' User stock data from Server', data)
-            dynamicResultTable(data)
+            //dynamicResultTable(data)
         })
+        location.reload(true)
     }
 
 
