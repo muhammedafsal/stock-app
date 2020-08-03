@@ -78,21 +78,13 @@
 							<div class="main_menu_container d-flex flex-row align-items-center justify-content-start">
 								<div class="main_menu_content">
 									<ul class="main_menu_list">
-                                        <li>
-                                            <a href="/logout" >LogOut</a>
-										</li> 
-										<li>
-                                            HOME
-										</li> 
-										<li>
-                                            ABOUT US
-										</li> 
-										<li>
-                                            BLOG
-										</li> 
-										<li>
-                                            CONTACT
-										</li> 
+                                        <li><a href="/logout">logout</a></li>
+										<li><a href="/" target="_blank">Home</a></li>
+										<li><a href="https://www.google.com/search?rlz=1C1CHBF_enIN831IN831&sxsrf=ALeKk03F6AHU1XhUqVEVFdTRYPL_Lm7hIQ%3A1596435573071&ei=dawnX92EBKyP4-EPmqK8yA8&q=conrona+virus+updates+in+india&oq=conrona+virus+updates+in+india&gs_lcp=CgZwc3ktYWIQAzIECAAQDTIECAAQDTIECAAQDTIECAAQDTIECAAQDTIECAAQDTIECAAQDTIECAAQDTIECAAQDTIECAAQDToECAAQR1CNF1jCJWD4KGgAcAF4AIAB1QOIAdUDkgEDNC0xmAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwidk_X5sf7qAhWsxzgGHRoRD_kQ4dUDCAw&uact=5#wptab=s:H4sIAAAAAAAAAONgVuLVT9c3NMwySk6OL8zJecTYwMgt8PLHPWGp8klrTl5jLOQS901NyUzOzEt1ySxOTSxO9clPTizJzM8T0uNic80rySypFFLhEpRCNUeDQYqfC1VISI2LA65XiotHikM_V9_AuCjbAKiYiwvO49nFxO2RmphTkhFcklhSvIhV3DMvJTNRwTm_KD8vsSyzqLRYoRgkAwCMFnURvQAAAA" target="_blank">Corona Updates</a></li>
+										<li><a href="https://www.nseindia.com/" target="_blank">NSE</a></li>
+										<li><a href="https://www.bseindia.com/" target="_blank">BSE</a></li> 
+										<li><a href="https://stackfinance.co/" target="_blank">About Us</a></li>
+										<li><a href="https://stackfinance.co/" target="_blank">Blog</a></li>
 									</ul>
 								</div>
 							</div>
@@ -114,18 +106,20 @@
 	
 	
 	<div style="float: right;">
-		<br><br><div>
+		<br><br><div style="color:black">
 		<div style="border: 2px solid tomato; border-radius: 8px;">
 		<h3  style="color:black">My Details</h3>
-		<h5>Name : <%= user.name %></h5 >
-		<h5>Email : <%= user.email %></h5>
+		<h5>Name  &nbsp: <%= user.name %></h5>
+		<h5>Email &nbsp&nbsp: <%= user.email %></h5>
+		<h5>Stocks &nbsp: <%= user.company.length%></h5>
+
 		</div></div>
 	</div><br>
 
     <div>
 		<h1 class="mt-4" style="color:black;border-bottom: 6px solid blue;background-color: lightgrey; width : 26%"><strong>My Dashboard</strong></h1>
         <p class="lead mb-3"></p>
-	</div><br><br>
+	</div><br><br><br><br>
 
 	
 
