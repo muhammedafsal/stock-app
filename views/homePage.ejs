@@ -131,7 +131,7 @@
 
 
 	<h3><strong style="color:black">Market Data</strong></h3>
-	<table class="table table-striped table-primary">
+	<table class="table table-striped table-primary" id = "marketDataTable">
 		<thead>
 		  <tr>
 			<th>SYMBOL</th>
@@ -158,6 +158,12 @@
 	  </table>
 	  </div>
 	  <br><br>
+
+	  <script>
+		  $("#marketDataTable").on("change", function(e) {
+				console.log('Data changed');
+				});
+	  </script>
 	
 
 	<!-- Footer -->
