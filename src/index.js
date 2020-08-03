@@ -7,7 +7,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path')
 require('./db/mongoose')
-const userRouter = require('./routers/RESTApiRouters/user')
 const companyRouter = require('./routers/RESTApiRouters/company')
 
 const Company = require('./models/company')
@@ -67,7 +66,6 @@ app.use(function(req, res, next) {
 
 app.use(express.static(publicDir));
 app.use(express.json())
-app.use(userRouter)
 app.use(companyRouter)
 app.use(viewRouter)
 

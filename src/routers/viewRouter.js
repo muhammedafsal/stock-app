@@ -1,5 +1,4 @@
 const User = require('../models/user')
-const auth = require('../middleware/auth')
 const express = require('express')
 const router = new express.Router()
 const passport = require('passport')
@@ -8,14 +7,11 @@ const Company = require('../models/company')
 const { io } = require('../index')
 
 
-
-
 // Home Page  Displays all the Stock details and navigates to Register/Login
 router.get('/', async (req, res) =>{
     const companies = await Company.find()
     res.render('homePage', {companies})
 })
-
 
 
 // Register / Login
@@ -29,7 +25,7 @@ router.get('/dashboard',ensureAuthenticated, async (req, res) => {
 
     try{
         
-        await io.on('connection', (socket) => {
+         io.on('connection', (socket) => {
 
             socket.emit('message', `Welcome ${req.user.name}`)
 
@@ -47,48 +43,36 @@ router.get('/dashboard',ensureAuthenticated, async (req, res) => {
 
             // data coming from client throgh websocket
             socket.on('userStocksDataFromClient', async (data) => {
-                if(data.length === 1){
-                    // data.forEach((cur) =>{
-                    //   req.user.stocks = req.user.stocks.concat(cur)
-                    // })
-
-                    const name = data[0].replace(' ','').toUpperCase()
+                if(data) {
+                    const name = data.replace(' ','').toUpperCase()
                     let company = await Company.findOne({name})
                     company.owner = req.user._id
                     await company.save()
-                    await req.user.populate('company').execPopulate()
                     
-
-                    console.log(req.user.company)
-
                     //data sending back to all the clients
                     io.emit('userStocksDataFromServer', req.user.company)   
-                    
-
-                } 
-                // clearing the duplicates from stocks array
-                req.user.stocks = [...new Set(req.user.stocks)]
-                //console.log('data', data)
-            
-
-                //save the data to DB
-                await req.user.save()
-
-                      
+                }                  
             })
 
             socket.on('init', () =>{
                 socket.emit('initResponse', req.user.stocks)
             })
 
+            // Singe delete // data from client
+            socket.on('deleteDataFromClient', async (data) => {
+                if(data) {
+                    const name = data.replace(' ','').toUpperCase()
+                    let company = await Company.findOne({name})
+                    company.owner = null
+                    await company.save()
+                }
+            })
         })
 
         // fetching all companies 
         const companies = await Company.find()
-
         // populating the company details associated with the virtual field of user.
         await req.user.populate('company').execPopulate()
-        
         res.render('dashboard', {
         user: req.user, companies
         })
